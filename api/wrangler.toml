@@ -1,0 +1,35 @@
+name = "assurur-cms-api"
+main = "src/index.ts"
+compatibility_date = "2024-02-01"
+
+[env.dev]
+name = "assurur-cms-api-dev"
+
+[[env.dev.d1_databases]]
+binding = "DB"
+database_name = "assurur-cms-dev"
+database_id = "<your-database-id>"
+
+[[env.dev.r2_buckets]]
+binding = "MEDIA"
+bucket_name = "assurur-media-dev"
+
+[[env.dev.kv_namespaces]]
+binding = "CACHE"
+id = "<your-kv-id>"
+
+[env.production]
+name = "assurur-cms-api"
+
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "assurur-cms-prod"
+database_id = "<your-production-database-id>"
+
+[[env.production.r2_buckets]]
+binding = "MEDIA"
+bucket_name = "assurur-media-prod"
+
+[[env.production.kv_namespaces]]
+binding = "CACHE"
+id = "<your-production-kv-id>"
