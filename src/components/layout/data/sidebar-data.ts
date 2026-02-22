@@ -21,6 +21,12 @@ import {
   AudioWaveform,
   Command,
   GalleryVerticalEnd,
+  FileText,
+  Building2,
+  School,
+  GraduationCap,
+  ScrollText,
+  Server,
 } from 'lucide-react'
 import { ClerkLogo } from '@/assets/clerk-logo'
 import { type SidebarData } from '../types'
@@ -63,6 +69,11 @@ export const sidebarData: SidebarData = {
           icon: ListTodo,
         },
         {
+          title: 'VPS',
+          url: '/vps',
+          icon: Server,
+        },
+        {
           title: 'Apps',
           url: '/apps',
           icon: Package,
@@ -77,6 +88,66 @@ export const sidebarData: SidebarData = {
           title: 'Users',
           url: '/users',
           icon: Users,
+        },
+        {
+      title: 'Yayasan',
+      items: [
+        {
+          title: 'Profil',
+          url: '/foundation/profile',
+          icon: Building2,
+        },
+        {
+          title: 'Dewan Pengurus',
+          url: '/foundation/board-members',
+          icon: Users,
+        },
+      ],
+    },
+        {
+      title: 'Konten',
+      items: [
+        {
+          title: 'Artikel',
+          url: '/cms/posts',
+          icon: FileText,
+        },
+        {
+          title: 'Galeri',
+          url: '/cms/media',
+          icon: GalleryVerticalEnd,
+        },
+        {
+          title: 'Kategori',
+          url: '/cms/categories',
+          icon: ListTodo,
+        },
+      ],
+    },
+    {
+          title: 'Sekolah',
+          items: [
+            {
+              title: 'Unit SDQu',
+              url: '/school/units',
+              icon: School,
+            },
+            {
+              title: 'Guru',
+              url: '/school/teachers',
+              icon: GraduationCap,
+            },
+            {
+              title: 'Kurikulum',
+              url: '/school/curriculum',
+              icon: ScrollText,
+            },
+            {
+              title: 'Fasilitas',
+              url: '/school/facilities',
+              icon: Package,
+            },
+          ],
         },
         {
           title: 'Secured by Clerk',
