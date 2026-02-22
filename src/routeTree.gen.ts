@@ -297,6 +297,7 @@ const AuthenticatedCmsCategoriesRoute =
   } as any)
 
 export interface FileRoutesByFullPath {
+  '/': typeof AuthenticatedIndexRoute
   '/clerk': typeof ClerkAuthenticatedRouteRouteWithChildren
   '/settings': typeof AuthenticatedSettingsRouteRouteWithChildren
   '/forgot-password': typeof authForgotPasswordRoute
@@ -309,7 +310,6 @@ export interface FileRoutesByFullPath {
   '/404': typeof errors404Route
   '/500': typeof errors500Route
   '/503': typeof errors503Route
-  '/': typeof AuthenticatedIndexRoute
   '/cms/categories': typeof AuthenticatedCmsCategoriesRoute
   '/cms/media': typeof AuthenticatedCmsMediaRoute
   '/cms/posts': typeof AuthenticatedCmsPostsRoute
@@ -329,16 +329,16 @@ export interface FileRoutesByFullPath {
   '/clerk/sign-in': typeof ClerkauthSignInRoute
   '/clerk/sign-up': typeof ClerkauthSignUpRoute
   '/clerk/user-management': typeof ClerkAuthenticatedUserManagementRoute
-  '/apps': typeof AuthenticatedAppsIndexRoute
-  '/chats': typeof AuthenticatedChatsIndexRoute
-  '/cms': typeof AuthenticatedCmsIndexRoute
-  '/foundation': typeof AuthenticatedFoundationIndexRoute
-  '/help-center': typeof AuthenticatedHelpCenterIndexRoute
-  '/school': typeof AuthenticatedSchoolIndexRoute
+  '/apps/': typeof AuthenticatedAppsIndexRoute
+  '/chats/': typeof AuthenticatedChatsIndexRoute
+  '/cms/': typeof AuthenticatedCmsIndexRoute
+  '/foundation/': typeof AuthenticatedFoundationIndexRoute
+  '/help-center/': typeof AuthenticatedHelpCenterIndexRoute
+  '/school/': typeof AuthenticatedSchoolIndexRoute
   '/settings/': typeof AuthenticatedSettingsIndexRoute
-  '/tasks': typeof AuthenticatedTasksIndexRoute
-  '/users': typeof AuthenticatedUsersIndexRoute
-  '/vps': typeof AuthenticatedVpsIndexRoute
+  '/tasks/': typeof AuthenticatedTasksIndexRoute
+  '/users/': typeof AuthenticatedUsersIndexRoute
+  '/vps/': typeof AuthenticatedVpsIndexRoute
 }
 export interface FileRoutesByTo {
   '/clerk': typeof ClerkAuthenticatedRouteRouteWithChildren
@@ -434,6 +434,7 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
+    | '/'
     | '/clerk'
     | '/settings'
     | '/forgot-password'
@@ -446,7 +447,6 @@ export interface FileRouteTypes {
     | '/404'
     | '/500'
     | '/503'
-    | '/'
     | '/cms/categories'
     | '/cms/media'
     | '/cms/posts'
@@ -466,16 +466,16 @@ export interface FileRouteTypes {
     | '/clerk/sign-in'
     | '/clerk/sign-up'
     | '/clerk/user-management'
-    | '/apps'
-    | '/chats'
-    | '/cms'
-    | '/foundation'
-    | '/help-center'
-    | '/school'
+    | '/apps/'
+    | '/chats/'
+    | '/cms/'
+    | '/foundation/'
+    | '/help-center/'
+    | '/school/'
     | '/settings/'
-    | '/tasks'
-    | '/users'
-    | '/vps'
+    | '/tasks/'
+    | '/users/'
+    | '/vps/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/clerk'
@@ -595,7 +595,7 @@ declare module '@tanstack/react-router' {
     '/_authenticated': {
       id: '/_authenticated'
       path: ''
-      fullPath: ''
+      fullPath: '/'
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
@@ -700,21 +700,21 @@ declare module '@tanstack/react-router' {
     '/_authenticated/vps/': {
       id: '/_authenticated/vps/'
       path: '/vps'
-      fullPath: '/vps'
+      fullPath: '/vps/'
       preLoaderRoute: typeof AuthenticatedVpsIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/users/': {
       id: '/_authenticated/users/'
       path: '/users'
-      fullPath: '/users'
+      fullPath: '/users/'
       preLoaderRoute: typeof AuthenticatedUsersIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/tasks/': {
       id: '/_authenticated/tasks/'
       path: '/tasks'
-      fullPath: '/tasks'
+      fullPath: '/tasks/'
       preLoaderRoute: typeof AuthenticatedTasksIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
@@ -728,42 +728,42 @@ declare module '@tanstack/react-router' {
     '/_authenticated/school/': {
       id: '/_authenticated/school/'
       path: '/school'
-      fullPath: '/school'
+      fullPath: '/school/'
       preLoaderRoute: typeof AuthenticatedSchoolIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/help-center/': {
       id: '/_authenticated/help-center/'
       path: '/help-center'
-      fullPath: '/help-center'
+      fullPath: '/help-center/'
       preLoaderRoute: typeof AuthenticatedHelpCenterIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/foundation/': {
       id: '/_authenticated/foundation/'
       path: '/foundation'
-      fullPath: '/foundation'
+      fullPath: '/foundation/'
       preLoaderRoute: typeof AuthenticatedFoundationIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/cms/': {
       id: '/_authenticated/cms/'
       path: '/cms'
-      fullPath: '/cms'
+      fullPath: '/cms/'
       preLoaderRoute: typeof AuthenticatedCmsIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/chats/': {
       id: '/_authenticated/chats/'
       path: '/chats'
-      fullPath: '/chats'
+      fullPath: '/chats/'
       preLoaderRoute: typeof AuthenticatedChatsIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/apps/': {
       id: '/_authenticated/apps/'
       path: '/apps'
-      fullPath: '/apps'
+      fullPath: '/apps/'
       preLoaderRoute: typeof AuthenticatedAppsIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
