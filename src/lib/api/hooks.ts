@@ -1,4 +1,4 @@
-import { useQuery, useMutation, useQueryClient, type UseQueryOptions } from '@tanstack/react-query'
+import { useQuery, useMutation, useQueryClient, type UseQueryOptions, type QueryClient } from '@tanstack/react-query'
 import type {
   Post,
   Page,
@@ -46,18 +46,16 @@ export const queryKeys = {
 
 // Generic mutation options with error handling
 function getMutationOptions<TData, TError, TVariables, TContext>(
+  queryClient: QueryClient,
   successMessage?: string,
   queryKeysToInvalidate?: readonly unknown[][]
 ) {
   return {
     onSuccess: () => {
       if (successMessage) {
-        // TODO: Add toast notification
         console.log(successMessage)
       }
-      // Invalidate affected queries
       if (queryKeysToInvalidate) {
-        const queryClient = useQueryClient()
         queryKeysToInvalidate.forEach((keys) => {
           queryClient.invalidateQueries({ queryKey: keys })
         })
