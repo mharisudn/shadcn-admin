@@ -6,7 +6,7 @@ import { requirePermission } from '../middleware/rbac'
 import * as schema from '../db/schema'
 import { createDB } from '../db'
 import { eq, desc, and, sql, isNull } from 'drizzle-orm'
-import type { HonoEnv } from '../env'
+import type { HonoEnv } from '../env.d'
 
 const pages = new Hono<HonoEnv>()
 

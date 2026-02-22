@@ -4,8 +4,9 @@ import { pagesRouter } from './pages'
 import { categoriesRouter } from './categories'
 import { statsRouter } from './stats'
 import { mediaRouter } from './media'
+import type { HonoEnv } from '../env.d'
 
-const cms = new Hono()
+const cms = new Hono<HonoEnv>()
 
 // Aggregate all CMS routes
 cms.route('/posts', postsRouter)

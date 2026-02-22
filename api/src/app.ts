@@ -1,8 +1,8 @@
 import { Hono } from 'hono'
-import type { Bindings } from './index'
+import type { HonoEnv } from './env.d'
 
 export function createApp() {
-  const app = new Hono<{ Bindings: Bindings }>()
+  const app = new Hono<HonoEnv>()
 
   // Register routes here
   return app

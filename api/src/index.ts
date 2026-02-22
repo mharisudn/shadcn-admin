@@ -4,17 +4,9 @@ import { logger } from 'hono/logger'
 import { errorHandler } from './middleware/error-handler'
 import { authMiddleware } from './middleware/auth'
 import { cmsRouter } from './routes/cms'
+import type { HonoEnv } from './env.d'
 
-export type Bindings = {
-  DB: D1Database
-  MEDIA: R2Bucket
-  CACHE: KVNamespace
-  DATABASE_URL: string
-  SUPABASE_JWKS_URL: string
-  JWT_SECRET: string
-}
-
-const app = new Hono<{ Bindings: Bindings }>()
+const app = new Hono<HonoEnv>()
 
 // Global middleware
 app.use('*', logger())

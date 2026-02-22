@@ -2,12 +2,6 @@ import { Context, Next } from 'hono'
 import type { DecodedToken } from '../lib/jwt'
 import { verifySupabaseToken } from '../lib/jwt'
 
-declare module 'hono' {
-  interface ContextVariableMap {
-    user: DecodedToken
-  }
-}
-
 export async function authMiddleware(c: Context, next: Next) {
   const authHeader = c.req.header('Authorization')
 

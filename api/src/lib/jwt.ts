@@ -1,9 +1,11 @@
 import { jwtVerify, type JWTPayload } from 'jose'
 
+export type UserRole = 'admin' | 'editor' | 'author'
+
 export interface DecodedToken extends JWTPayload {
   sub: string // user_id
   email: string
-  role: string
+  role?: UserRole
 }
 
 export async function verifySupabaseToken(
@@ -24,7 +26,7 @@ export async function verifySupabaseToken(
     return {
       sub: payload.sub as string,
       email: payload.email as string,
-      role: payload.role as string,
+      role: payload.role as UserRole | undefined,
       ...payload,
     }
   } catch (error) {

@@ -6,8 +6,9 @@ import { requirePermission } from '../middleware/rbac'
 import * as schema from '../db/schema'
 import { createDB } from '../db'
 import { eq, desc, and, sql } from 'drizzle-orm'
+import type { HonoEnv } from '../env.d'
 
-const posts = new Hono()
+const posts = new Hono<HonoEnv>()
 
 // Validation schemas
 const createPostSchema = z.object({

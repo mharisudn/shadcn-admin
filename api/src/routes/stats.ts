@@ -4,7 +4,7 @@ import * as schema from '../db/schema'
 import { createDB } from '../db'
 import { eq, sql, and, desc } from 'drizzle-orm'
 
-import type { HonoEnv } from '../env'
+import type { HonoEnv } from '../env.d'
 const stats = new Hono<HonoEnv>()
 
 // Get dashboard statistics

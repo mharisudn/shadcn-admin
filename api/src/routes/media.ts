@@ -6,8 +6,9 @@ import { requirePermission } from '../middleware/rbac'
 import { uploadToR2, deleteFromR2 } from '../lib/r2'
 import * as schema from '../db/schema'
 import { createDB } from '../db'
+import type { HonoEnv } from '../env.d'
 
-const media = new Hono()
+const media = new Hono<HonoEnv>()
 
 // Get presigned URL for upload
 media.post(
@@ -67,7 +68,7 @@ media.post('/upload', authMiddleware, requirePermission('media:upload'), async (
         mimeType: file.type,
         size: file.size,
         url: result.url,
-        bucket: c.env.MEDIA.name,
+        bucket: 'assurur-media',
         path: result.key,
         uploadedBy: c.get('user').sub,
       })
