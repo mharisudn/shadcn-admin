@@ -5,7 +5,7 @@ import { errorHandler } from './middleware/error-handler'
 import { authMiddleware } from './middleware/auth'
 import { cmsRouter } from './routes/cms'
 
-type Bindings = {
+export type Bindings = {
   DB: D1Database
   MEDIA: R2Bucket
   CACHE: KVNamespace
