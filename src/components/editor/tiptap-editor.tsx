@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { useEditor, EditorContent } from '@tiptap/react'
+import { useEditor, EditorContent, type Editor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Link from '@tiptap/extension-link'
 import Image from '@tiptap/extension-image'
@@ -28,6 +28,33 @@ interface TiptapEditorProps {
   placeholder?: string
   className?: string
   editable?: boolean
+}
+
+interface ToolbarButtonProps {
+  onClick: () => void
+  isActive?: boolean
+  children: React.ReactNode
+  disabled?: boolean
+}
+
+function ToolbarButton({
+  onClick,
+  isActive,
+  children,
+  disabled,
+}: ToolbarButtonProps) {
+  return (
+    <Button
+      type="button"
+      variant={isActive ? 'secondary' : 'ghost'}
+      size="sm"
+      className="h-8 w-8 p-0"
+      onClick={onClick}
+      disabled={disabled}
+    >
+      {children}
+    </Button>
+  )
 }
 
 export function TiptapEditor({
@@ -107,29 +134,6 @@ export function TiptapEditor({
     return null
   }
 
-  const ToolbarButton = ({
-    onClick,
-    isActive,
-    children,
-    disabled,
-  }: {
-    onClick: () => void
-    isActive?: boolean
-    children: React.ReactNode
-    disabled?: boolean
-  }) => (
-    <Button
-      type="button"
-      variant={isActive ? 'secondary' : 'ghost'}
-      size="sm"
-      className="h-8 w-8 p-0"
-      onClick={onClick}
-      disabled={disabled || !editable}
-    >
-      {children}
-    </Button>
-  )
-
   return (
     <div className={cn('rounded-md border border-input', className)}>
       {editable && (
@@ -137,6 +141,7 @@ export function TiptapEditor({
           <ToolbarButton
             onClick={() => editor.chain().focus().toggleBold().run()}
             isActive={editor.isActive('bold')}
+            disabled={!editable}
           >
             <Bold className="h-4 w-4" />
           </ToolbarButton>
@@ -144,6 +149,7 @@ export function TiptapEditor({
           <ToolbarButton
             onClick={() => editor.chain().focus().toggleItalic().run()}
             isActive={editor.isActive('italic')}
+            disabled={!editable}
           >
             <Italic className="h-4 w-4" />
           </ToolbarButton>
@@ -151,6 +157,7 @@ export function TiptapEditor({
           <ToolbarButton
             onClick={() => editor.chain().focus().toggleStrike().run()}
             isActive={editor.isActive('strike')}
+            disabled={!editable}
           >
             <Strikethrough className="h-4 w-4" />
           </ToolbarButton>
@@ -158,6 +165,7 @@ export function TiptapEditor({
           <ToolbarButton
             onClick={() => editor.chain().focus().toggleCode().run()}
             isActive={editor.isActive('code')}
+            disabled={!editable}
           >
             <Code className="h-4 w-4" />
           </ToolbarButton>
@@ -167,6 +175,7 @@ export function TiptapEditor({
           <ToolbarButton
             onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
             isActive={editor.isActive('heading', { level: 1 })}
+            disabled={!editable}
           >
             <Heading1 className="h-4 w-4" />
           </ToolbarButton>
@@ -174,6 +183,7 @@ export function TiptapEditor({
           <ToolbarButton
             onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
             isActive={editor.isActive('heading', { level: 2 })}
+            disabled={!editable}
           >
             <Heading2 className="h-4 w-4" />
           </ToolbarButton>
@@ -181,6 +191,7 @@ export function TiptapEditor({
           <ToolbarButton
             onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
             isActive={editor.isActive('heading', { level: 3 })}
+            disabled={!editable}
           >
             <Heading3 className="h-4 w-4" />
           </ToolbarButton>
@@ -190,6 +201,7 @@ export function TiptapEditor({
           <ToolbarButton
             onClick={() => editor.chain().focus().toggleBulletList().run()}
             isActive={editor.isActive('bulletList')}
+            disabled={!editable}
           >
             <List className="h-4 w-4" />
           </ToolbarButton>
@@ -197,6 +209,7 @@ export function TiptapEditor({
           <ToolbarButton
             onClick={() => editor.chain().focus().toggleOrderedList().run()}
             isActive={editor.isActive('orderedList')}
+            disabled={!editable}
           >
             <ListOrdered className="h-4 w-4" />
           </ToolbarButton>
@@ -204,17 +217,22 @@ export function TiptapEditor({
           <ToolbarButton
             onClick={() => editor.chain().focus().toggleBlockquote().run()}
             isActive={editor.isActive('blockquote')}
+            disabled={!editable}
           >
             <Quote className="h-4 w-4" />
           </ToolbarButton>
 
           <Separator orientation="vertical" className="mx-1 h-6" />
 
-          <ToolbarButton onClick={setLink} isActive={editor.isActive('link')}>
+          <ToolbarButton
+            onClick={setLink}
+            isActive={editor.isActive('link')}
+            disabled={!editable}
+          >
             <span className="text-sm font-bold">Link</span>
           </ToolbarButton>
 
-          <ToolbarButton onClick={addImage}>
+          <ToolbarButton onClick={addImage} disabled={!editable}>
             <span className="text-sm font-bold">Gambar</span>
           </ToolbarButton>
 
@@ -222,14 +240,14 @@ export function TiptapEditor({
 
           <ToolbarButton
             onClick={() => editor.chain().focus().undo().run()}
-            disabled={!editor.can().undo()}
+            disabled={!editor.can().undo() || !editable}
           >
             <Undo className="h-4 w-4" />
           </ToolbarButton>
 
           <ToolbarButton
             onClick={() => editor.chain().focus().redo().run()}
-            disabled={!editor.can().redo()}
+            disabled={!editor.can().redo() || !editable}
           >
             <Redo className="h-4 w-4" />
           </ToolbarButton>

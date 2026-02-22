@@ -25,20 +25,35 @@ import { Route as authForgotPasswordRouteImport } from './routes/(auth)/forgot-p
 import { Route as ClerkAuthenticatedRouteRouteImport } from './routes/clerk/_authenticated/route'
 import { Route as ClerkauthRouteRouteImport } from './routes/clerk/(auth)/route'
 import { Route as AuthenticatedSettingsRouteRouteImport } from './routes/_authenticated/settings/route'
+import { Route as AuthenticatedVpsIndexRouteImport } from './routes/_authenticated/vps/index'
 import { Route as AuthenticatedUsersIndexRouteImport } from './routes/_authenticated/users/index'
 import { Route as AuthenticatedTasksIndexRouteImport } from './routes/_authenticated/tasks/index'
 import { Route as AuthenticatedSettingsIndexRouteImport } from './routes/_authenticated/settings/index'
+import { Route as AuthenticatedSchoolIndexRouteImport } from './routes/_authenticated/school/index'
 import { Route as AuthenticatedHelpCenterIndexRouteImport } from './routes/_authenticated/help-center/index'
+import { Route as AuthenticatedFoundationIndexRouteImport } from './routes/_authenticated/foundation/index'
+import { Route as AuthenticatedCmsIndexRouteImport } from './routes/_authenticated/cms/index'
 import { Route as AuthenticatedChatsIndexRouteImport } from './routes/_authenticated/chats/index'
 import { Route as AuthenticatedAppsIndexRouteImport } from './routes/_authenticated/apps/index'
 import { Route as ClerkAuthenticatedUserManagementRouteImport } from './routes/clerk/_authenticated/user-management'
 import { Route as ClerkauthSignUpRouteImport } from './routes/clerk/(auth)/sign-up'
 import { Route as ClerkauthSignInRouteImport } from './routes/clerk/(auth)/sign-in'
+import { Route as AuthenticatedVpsCreateRouteImport } from './routes/_authenticated/vps/create'
+import { Route as AuthenticatedVpsVpsIdRouteImport } from './routes/_authenticated/vps/$vpsId'
 import { Route as AuthenticatedSettingsNotificationsRouteImport } from './routes/_authenticated/settings/notifications'
 import { Route as AuthenticatedSettingsDisplayRouteImport } from './routes/_authenticated/settings/display'
 import { Route as AuthenticatedSettingsAppearanceRouteImport } from './routes/_authenticated/settings/appearance'
 import { Route as AuthenticatedSettingsAccountRouteImport } from './routes/_authenticated/settings/account'
+import { Route as AuthenticatedSchoolUnitsRouteImport } from './routes/_authenticated/school/units'
+import { Route as AuthenticatedSchoolTeachersRouteImport } from './routes/_authenticated/school/teachers'
+import { Route as AuthenticatedSchoolFacilitiesRouteImport } from './routes/_authenticated/school/facilities'
+import { Route as AuthenticatedSchoolCurriculumRouteImport } from './routes/_authenticated/school/curriculum'
+import { Route as AuthenticatedFoundationProfileRouteImport } from './routes/_authenticated/foundation/profile'
+import { Route as AuthenticatedFoundationBoardMembersRouteImport } from './routes/_authenticated/foundation/board-members'
 import { Route as AuthenticatedErrorsErrorRouteImport } from './routes/_authenticated/errors/$error'
+import { Route as AuthenticatedCmsPostsRouteImport } from './routes/_authenticated/cms/posts'
+import { Route as AuthenticatedCmsMediaRouteImport } from './routes/_authenticated/cms/media'
+import { Route as AuthenticatedCmsCategoriesRouteImport } from './routes/_authenticated/cms/categories'
 
 const ClerkRouteRoute = ClerkRouteRouteImport.update({
   id: '/clerk',
@@ -118,6 +133,11 @@ const AuthenticatedSettingsRouteRoute =
     path: '/settings',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedVpsIndexRoute = AuthenticatedVpsIndexRouteImport.update({
+  id: '/vps/',
+  path: '/vps/',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedUsersIndexRoute = AuthenticatedUsersIndexRouteImport.update({
   id: '/users/',
   path: '/users/',
@@ -134,12 +154,29 @@ const AuthenticatedSettingsIndexRoute =
     path: '/',
     getParentRoute: () => AuthenticatedSettingsRouteRoute,
   } as any)
+const AuthenticatedSchoolIndexRoute =
+  AuthenticatedSchoolIndexRouteImport.update({
+    id: '/school/',
+    path: '/school/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedHelpCenterIndexRoute =
   AuthenticatedHelpCenterIndexRouteImport.update({
     id: '/help-center/',
     path: '/help-center/',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedFoundationIndexRoute =
+  AuthenticatedFoundationIndexRouteImport.update({
+    id: '/foundation/',
+    path: '/foundation/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedCmsIndexRoute = AuthenticatedCmsIndexRouteImport.update({
+  id: '/cms/',
+  path: '/cms/',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedChatsIndexRoute = AuthenticatedChatsIndexRouteImport.update({
   id: '/chats/',
   path: '/chats/',
@@ -166,6 +203,16 @@ const ClerkauthSignInRoute = ClerkauthSignInRouteImport.update({
   path: '/sign-in',
   getParentRoute: () => ClerkauthRouteRoute,
 } as any)
+const AuthenticatedVpsCreateRoute = AuthenticatedVpsCreateRouteImport.update({
+  id: '/vps/create',
+  path: '/vps/create',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedVpsVpsIdRoute = AuthenticatedVpsVpsIdRouteImport.update({
+  id: '/vps/$vpsId',
+  path: '/vps/$vpsId',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedSettingsNotificationsRoute =
   AuthenticatedSettingsNotificationsRouteImport.update({
     id: '/notifications',
@@ -190,10 +237,62 @@ const AuthenticatedSettingsAccountRoute =
     path: '/account',
     getParentRoute: () => AuthenticatedSettingsRouteRoute,
   } as any)
+const AuthenticatedSchoolUnitsRoute =
+  AuthenticatedSchoolUnitsRouteImport.update({
+    id: '/school/units',
+    path: '/school/units',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedSchoolTeachersRoute =
+  AuthenticatedSchoolTeachersRouteImport.update({
+    id: '/school/teachers',
+    path: '/school/teachers',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedSchoolFacilitiesRoute =
+  AuthenticatedSchoolFacilitiesRouteImport.update({
+    id: '/school/facilities',
+    path: '/school/facilities',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedSchoolCurriculumRoute =
+  AuthenticatedSchoolCurriculumRouteImport.update({
+    id: '/school/curriculum',
+    path: '/school/curriculum',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedFoundationProfileRoute =
+  AuthenticatedFoundationProfileRouteImport.update({
+    id: '/foundation/profile',
+    path: '/foundation/profile',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedFoundationBoardMembersRoute =
+  AuthenticatedFoundationBoardMembersRouteImport.update({
+    id: '/foundation/board-members',
+    path: '/foundation/board-members',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedErrorsErrorRoute =
   AuthenticatedErrorsErrorRouteImport.update({
     id: '/errors/$error',
     path: '/errors/$error',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedCmsPostsRoute = AuthenticatedCmsPostsRouteImport.update({
+  id: '/cms/posts',
+  path: '/cms/posts',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedCmsMediaRoute = AuthenticatedCmsMediaRouteImport.update({
+  id: '/cms/media',
+  path: '/cms/media',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedCmsCategoriesRoute =
+  AuthenticatedCmsCategoriesRouteImport.update({
+    id: '/cms/categories',
+    path: '/cms/categories',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 
@@ -211,20 +310,35 @@ export interface FileRoutesByFullPath {
   '/500': typeof errors500Route
   '/503': typeof errors503Route
   '/': typeof AuthenticatedIndexRoute
+  '/cms/categories': typeof AuthenticatedCmsCategoriesRoute
+  '/cms/media': typeof AuthenticatedCmsMediaRoute
+  '/cms/posts': typeof AuthenticatedCmsPostsRoute
   '/errors/$error': typeof AuthenticatedErrorsErrorRoute
+  '/foundation/board-members': typeof AuthenticatedFoundationBoardMembersRoute
+  '/foundation/profile': typeof AuthenticatedFoundationProfileRoute
+  '/school/curriculum': typeof AuthenticatedSchoolCurriculumRoute
+  '/school/facilities': typeof AuthenticatedSchoolFacilitiesRoute
+  '/school/teachers': typeof AuthenticatedSchoolTeachersRoute
+  '/school/units': typeof AuthenticatedSchoolUnitsRoute
   '/settings/account': typeof AuthenticatedSettingsAccountRoute
   '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
   '/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
+  '/vps/$vpsId': typeof AuthenticatedVpsVpsIdRoute
+  '/vps/create': typeof AuthenticatedVpsCreateRoute
   '/clerk/sign-in': typeof ClerkauthSignInRoute
   '/clerk/sign-up': typeof ClerkauthSignUpRoute
   '/clerk/user-management': typeof ClerkAuthenticatedUserManagementRoute
   '/apps': typeof AuthenticatedAppsIndexRoute
   '/chats': typeof AuthenticatedChatsIndexRoute
+  '/cms': typeof AuthenticatedCmsIndexRoute
+  '/foundation': typeof AuthenticatedFoundationIndexRoute
   '/help-center': typeof AuthenticatedHelpCenterIndexRoute
+  '/school': typeof AuthenticatedSchoolIndexRoute
   '/settings/': typeof AuthenticatedSettingsIndexRoute
   '/tasks': typeof AuthenticatedTasksIndexRoute
   '/users': typeof AuthenticatedUsersIndexRoute
+  '/vps': typeof AuthenticatedVpsIndexRoute
 }
 export interface FileRoutesByTo {
   '/clerk': typeof ClerkAuthenticatedRouteRouteWithChildren
@@ -239,20 +353,35 @@ export interface FileRoutesByTo {
   '/500': typeof errors500Route
   '/503': typeof errors503Route
   '/': typeof AuthenticatedIndexRoute
+  '/cms/categories': typeof AuthenticatedCmsCategoriesRoute
+  '/cms/media': typeof AuthenticatedCmsMediaRoute
+  '/cms/posts': typeof AuthenticatedCmsPostsRoute
   '/errors/$error': typeof AuthenticatedErrorsErrorRoute
+  '/foundation/board-members': typeof AuthenticatedFoundationBoardMembersRoute
+  '/foundation/profile': typeof AuthenticatedFoundationProfileRoute
+  '/school/curriculum': typeof AuthenticatedSchoolCurriculumRoute
+  '/school/facilities': typeof AuthenticatedSchoolFacilitiesRoute
+  '/school/teachers': typeof AuthenticatedSchoolTeachersRoute
+  '/school/units': typeof AuthenticatedSchoolUnitsRoute
   '/settings/account': typeof AuthenticatedSettingsAccountRoute
   '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
   '/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
+  '/vps/$vpsId': typeof AuthenticatedVpsVpsIdRoute
+  '/vps/create': typeof AuthenticatedVpsCreateRoute
   '/clerk/sign-in': typeof ClerkauthSignInRoute
   '/clerk/sign-up': typeof ClerkauthSignUpRoute
   '/clerk/user-management': typeof ClerkAuthenticatedUserManagementRoute
   '/apps': typeof AuthenticatedAppsIndexRoute
   '/chats': typeof AuthenticatedChatsIndexRoute
+  '/cms': typeof AuthenticatedCmsIndexRoute
+  '/foundation': typeof AuthenticatedFoundationIndexRoute
   '/help-center': typeof AuthenticatedHelpCenterIndexRoute
+  '/school': typeof AuthenticatedSchoolIndexRoute
   '/settings': typeof AuthenticatedSettingsIndexRoute
   '/tasks': typeof AuthenticatedTasksIndexRoute
   '/users': typeof AuthenticatedUsersIndexRoute
+  '/vps': typeof AuthenticatedVpsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -272,20 +401,35 @@ export interface FileRoutesById {
   '/(errors)/500': typeof errors500Route
   '/(errors)/503': typeof errors503Route
   '/_authenticated/': typeof AuthenticatedIndexRoute
+  '/_authenticated/cms/categories': typeof AuthenticatedCmsCategoriesRoute
+  '/_authenticated/cms/media': typeof AuthenticatedCmsMediaRoute
+  '/_authenticated/cms/posts': typeof AuthenticatedCmsPostsRoute
   '/_authenticated/errors/$error': typeof AuthenticatedErrorsErrorRoute
+  '/_authenticated/foundation/board-members': typeof AuthenticatedFoundationBoardMembersRoute
+  '/_authenticated/foundation/profile': typeof AuthenticatedFoundationProfileRoute
+  '/_authenticated/school/curriculum': typeof AuthenticatedSchoolCurriculumRoute
+  '/_authenticated/school/facilities': typeof AuthenticatedSchoolFacilitiesRoute
+  '/_authenticated/school/teachers': typeof AuthenticatedSchoolTeachersRoute
+  '/_authenticated/school/units': typeof AuthenticatedSchoolUnitsRoute
   '/_authenticated/settings/account': typeof AuthenticatedSettingsAccountRoute
   '/_authenticated/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
   '/_authenticated/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/_authenticated/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
+  '/_authenticated/vps/$vpsId': typeof AuthenticatedVpsVpsIdRoute
+  '/_authenticated/vps/create': typeof AuthenticatedVpsCreateRoute
   '/clerk/(auth)/sign-in': typeof ClerkauthSignInRoute
   '/clerk/(auth)/sign-up': typeof ClerkauthSignUpRoute
   '/clerk/_authenticated/user-management': typeof ClerkAuthenticatedUserManagementRoute
   '/_authenticated/apps/': typeof AuthenticatedAppsIndexRoute
   '/_authenticated/chats/': typeof AuthenticatedChatsIndexRoute
+  '/_authenticated/cms/': typeof AuthenticatedCmsIndexRoute
+  '/_authenticated/foundation/': typeof AuthenticatedFoundationIndexRoute
   '/_authenticated/help-center/': typeof AuthenticatedHelpCenterIndexRoute
+  '/_authenticated/school/': typeof AuthenticatedSchoolIndexRoute
   '/_authenticated/settings/': typeof AuthenticatedSettingsIndexRoute
   '/_authenticated/tasks/': typeof AuthenticatedTasksIndexRoute
   '/_authenticated/users/': typeof AuthenticatedUsersIndexRoute
+  '/_authenticated/vps/': typeof AuthenticatedVpsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -303,20 +447,35 @@ export interface FileRouteTypes {
     | '/500'
     | '/503'
     | '/'
+    | '/cms/categories'
+    | '/cms/media'
+    | '/cms/posts'
     | '/errors/$error'
+    | '/foundation/board-members'
+    | '/foundation/profile'
+    | '/school/curriculum'
+    | '/school/facilities'
+    | '/school/teachers'
+    | '/school/units'
     | '/settings/account'
     | '/settings/appearance'
     | '/settings/display'
     | '/settings/notifications'
+    | '/vps/$vpsId'
+    | '/vps/create'
     | '/clerk/sign-in'
     | '/clerk/sign-up'
     | '/clerk/user-management'
     | '/apps'
     | '/chats'
+    | '/cms'
+    | '/foundation'
     | '/help-center'
+    | '/school'
     | '/settings/'
     | '/tasks'
     | '/users'
+    | '/vps'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/clerk'
@@ -331,20 +490,35 @@ export interface FileRouteTypes {
     | '/500'
     | '/503'
     | '/'
+    | '/cms/categories'
+    | '/cms/media'
+    | '/cms/posts'
     | '/errors/$error'
+    | '/foundation/board-members'
+    | '/foundation/profile'
+    | '/school/curriculum'
+    | '/school/facilities'
+    | '/school/teachers'
+    | '/school/units'
     | '/settings/account'
     | '/settings/appearance'
     | '/settings/display'
     | '/settings/notifications'
+    | '/vps/$vpsId'
+    | '/vps/create'
     | '/clerk/sign-in'
     | '/clerk/sign-up'
     | '/clerk/user-management'
     | '/apps'
     | '/chats'
+    | '/cms'
+    | '/foundation'
     | '/help-center'
+    | '/school'
     | '/settings'
     | '/tasks'
     | '/users'
+    | '/vps'
   id:
     | '__root__'
     | '/_authenticated'
@@ -363,20 +537,35 @@ export interface FileRouteTypes {
     | '/(errors)/500'
     | '/(errors)/503'
     | '/_authenticated/'
+    | '/_authenticated/cms/categories'
+    | '/_authenticated/cms/media'
+    | '/_authenticated/cms/posts'
     | '/_authenticated/errors/$error'
+    | '/_authenticated/foundation/board-members'
+    | '/_authenticated/foundation/profile'
+    | '/_authenticated/school/curriculum'
+    | '/_authenticated/school/facilities'
+    | '/_authenticated/school/teachers'
+    | '/_authenticated/school/units'
     | '/_authenticated/settings/account'
     | '/_authenticated/settings/appearance'
     | '/_authenticated/settings/display'
     | '/_authenticated/settings/notifications'
+    | '/_authenticated/vps/$vpsId'
+    | '/_authenticated/vps/create'
     | '/clerk/(auth)/sign-in'
     | '/clerk/(auth)/sign-up'
     | '/clerk/_authenticated/user-management'
     | '/_authenticated/apps/'
     | '/_authenticated/chats/'
+    | '/_authenticated/cms/'
+    | '/_authenticated/foundation/'
     | '/_authenticated/help-center/'
+    | '/_authenticated/school/'
     | '/_authenticated/settings/'
     | '/_authenticated/tasks/'
     | '/_authenticated/users/'
+    | '/_authenticated/vps/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -508,6 +697,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedSettingsRouteRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/vps/': {
+      id: '/_authenticated/vps/'
+      path: '/vps'
+      fullPath: '/vps'
+      preLoaderRoute: typeof AuthenticatedVpsIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/users/': {
       id: '/_authenticated/users/'
       path: '/users'
@@ -529,11 +725,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedSettingsIndexRouteImport
       parentRoute: typeof AuthenticatedSettingsRouteRoute
     }
+    '/_authenticated/school/': {
+      id: '/_authenticated/school/'
+      path: '/school'
+      fullPath: '/school'
+      preLoaderRoute: typeof AuthenticatedSchoolIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/help-center/': {
       id: '/_authenticated/help-center/'
       path: '/help-center'
       fullPath: '/help-center'
       preLoaderRoute: typeof AuthenticatedHelpCenterIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/foundation/': {
+      id: '/_authenticated/foundation/'
+      path: '/foundation'
+      fullPath: '/foundation'
+      preLoaderRoute: typeof AuthenticatedFoundationIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/cms/': {
+      id: '/_authenticated/cms/'
+      path: '/cms'
+      fullPath: '/cms'
+      preLoaderRoute: typeof AuthenticatedCmsIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/chats/': {
@@ -571,6 +788,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClerkauthSignInRouteImport
       parentRoute: typeof ClerkauthRouteRoute
     }
+    '/_authenticated/vps/create': {
+      id: '/_authenticated/vps/create'
+      path: '/vps/create'
+      fullPath: '/vps/create'
+      preLoaderRoute: typeof AuthenticatedVpsCreateRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/vps/$vpsId': {
+      id: '/_authenticated/vps/$vpsId'
+      path: '/vps/$vpsId'
+      fullPath: '/vps/$vpsId'
+      preLoaderRoute: typeof AuthenticatedVpsVpsIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/settings/notifications': {
       id: '/_authenticated/settings/notifications'
       path: '/notifications'
@@ -599,11 +830,74 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedSettingsAccountRouteImport
       parentRoute: typeof AuthenticatedSettingsRouteRoute
     }
+    '/_authenticated/school/units': {
+      id: '/_authenticated/school/units'
+      path: '/school/units'
+      fullPath: '/school/units'
+      preLoaderRoute: typeof AuthenticatedSchoolUnitsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/school/teachers': {
+      id: '/_authenticated/school/teachers'
+      path: '/school/teachers'
+      fullPath: '/school/teachers'
+      preLoaderRoute: typeof AuthenticatedSchoolTeachersRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/school/facilities': {
+      id: '/_authenticated/school/facilities'
+      path: '/school/facilities'
+      fullPath: '/school/facilities'
+      preLoaderRoute: typeof AuthenticatedSchoolFacilitiesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/school/curriculum': {
+      id: '/_authenticated/school/curriculum'
+      path: '/school/curriculum'
+      fullPath: '/school/curriculum'
+      preLoaderRoute: typeof AuthenticatedSchoolCurriculumRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/foundation/profile': {
+      id: '/_authenticated/foundation/profile'
+      path: '/foundation/profile'
+      fullPath: '/foundation/profile'
+      preLoaderRoute: typeof AuthenticatedFoundationProfileRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/foundation/board-members': {
+      id: '/_authenticated/foundation/board-members'
+      path: '/foundation/board-members'
+      fullPath: '/foundation/board-members'
+      preLoaderRoute: typeof AuthenticatedFoundationBoardMembersRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/errors/$error': {
       id: '/_authenticated/errors/$error'
       path: '/errors/$error'
       fullPath: '/errors/$error'
       preLoaderRoute: typeof AuthenticatedErrorsErrorRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/cms/posts': {
+      id: '/_authenticated/cms/posts'
+      path: '/cms/posts'
+      fullPath: '/cms/posts'
+      preLoaderRoute: typeof AuthenticatedCmsPostsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/cms/media': {
+      id: '/_authenticated/cms/media'
+      path: '/cms/media'
+      fullPath: '/cms/media'
+      preLoaderRoute: typeof AuthenticatedCmsMediaRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/cms/categories': {
+      id: '/_authenticated/cms/categories'
+      path: '/cms/categories'
+      fullPath: '/cms/categories'
+      preLoaderRoute: typeof AuthenticatedCmsCategoriesRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
   }
@@ -635,23 +929,54 @@ const AuthenticatedSettingsRouteRouteWithChildren =
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedSettingsRouteRoute: typeof AuthenticatedSettingsRouteRouteWithChildren
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
+  AuthenticatedCmsCategoriesRoute: typeof AuthenticatedCmsCategoriesRoute
+  AuthenticatedCmsMediaRoute: typeof AuthenticatedCmsMediaRoute
+  AuthenticatedCmsPostsRoute: typeof AuthenticatedCmsPostsRoute
   AuthenticatedErrorsErrorRoute: typeof AuthenticatedErrorsErrorRoute
+  AuthenticatedFoundationBoardMembersRoute: typeof AuthenticatedFoundationBoardMembersRoute
+  AuthenticatedFoundationProfileRoute: typeof AuthenticatedFoundationProfileRoute
+  AuthenticatedSchoolCurriculumRoute: typeof AuthenticatedSchoolCurriculumRoute
+  AuthenticatedSchoolFacilitiesRoute: typeof AuthenticatedSchoolFacilitiesRoute
+  AuthenticatedSchoolTeachersRoute: typeof AuthenticatedSchoolTeachersRoute
+  AuthenticatedSchoolUnitsRoute: typeof AuthenticatedSchoolUnitsRoute
+  AuthenticatedVpsVpsIdRoute: typeof AuthenticatedVpsVpsIdRoute
+  AuthenticatedVpsCreateRoute: typeof AuthenticatedVpsCreateRoute
   AuthenticatedAppsIndexRoute: typeof AuthenticatedAppsIndexRoute
   AuthenticatedChatsIndexRoute: typeof AuthenticatedChatsIndexRoute
+  AuthenticatedCmsIndexRoute: typeof AuthenticatedCmsIndexRoute
+  AuthenticatedFoundationIndexRoute: typeof AuthenticatedFoundationIndexRoute
   AuthenticatedHelpCenterIndexRoute: typeof AuthenticatedHelpCenterIndexRoute
+  AuthenticatedSchoolIndexRoute: typeof AuthenticatedSchoolIndexRoute
   AuthenticatedTasksIndexRoute: typeof AuthenticatedTasksIndexRoute
   AuthenticatedUsersIndexRoute: typeof AuthenticatedUsersIndexRoute
+  AuthenticatedVpsIndexRoute: typeof AuthenticatedVpsIndexRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedSettingsRouteRoute: AuthenticatedSettingsRouteRouteWithChildren,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
+  AuthenticatedCmsCategoriesRoute: AuthenticatedCmsCategoriesRoute,
+  AuthenticatedCmsMediaRoute: AuthenticatedCmsMediaRoute,
+  AuthenticatedCmsPostsRoute: AuthenticatedCmsPostsRoute,
   AuthenticatedErrorsErrorRoute: AuthenticatedErrorsErrorRoute,
+  AuthenticatedFoundationBoardMembersRoute:
+    AuthenticatedFoundationBoardMembersRoute,
+  AuthenticatedFoundationProfileRoute: AuthenticatedFoundationProfileRoute,
+  AuthenticatedSchoolCurriculumRoute: AuthenticatedSchoolCurriculumRoute,
+  AuthenticatedSchoolFacilitiesRoute: AuthenticatedSchoolFacilitiesRoute,
+  AuthenticatedSchoolTeachersRoute: AuthenticatedSchoolTeachersRoute,
+  AuthenticatedSchoolUnitsRoute: AuthenticatedSchoolUnitsRoute,
+  AuthenticatedVpsVpsIdRoute: AuthenticatedVpsVpsIdRoute,
+  AuthenticatedVpsCreateRoute: AuthenticatedVpsCreateRoute,
   AuthenticatedAppsIndexRoute: AuthenticatedAppsIndexRoute,
   AuthenticatedChatsIndexRoute: AuthenticatedChatsIndexRoute,
+  AuthenticatedCmsIndexRoute: AuthenticatedCmsIndexRoute,
+  AuthenticatedFoundationIndexRoute: AuthenticatedFoundationIndexRoute,
   AuthenticatedHelpCenterIndexRoute: AuthenticatedHelpCenterIndexRoute,
+  AuthenticatedSchoolIndexRoute: AuthenticatedSchoolIndexRoute,
   AuthenticatedTasksIndexRoute: AuthenticatedTasksIndexRoute,
   AuthenticatedUsersIndexRoute: AuthenticatedUsersIndexRoute,
+  AuthenticatedVpsIndexRoute: AuthenticatedVpsIndexRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
