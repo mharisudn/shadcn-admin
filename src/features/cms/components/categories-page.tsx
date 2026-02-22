@@ -1,15 +1,11 @@
 import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { Plus, Pencil, Trash2 } from 'lucide-react'
+import { toast } from 'sonner'
+import type { CategoryWithPostCount } from '@/lib/api/types'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { ConfigDrawer } from '@/components/config-drawer'
-import { Header } from '@/components/layout/header'
-import { Input } from '@/components/ui/input'
-import { Main } from '@/components/layout/main'
-import { PageHeader } from '@/components/layout/page-header'
-import { ProfileDropdown } from '@/components/profile-dropdown'
-import { Search } from '@/components/search'
-import { ThemeSwitch } from '@/components/theme-switch'
 import {
   Dialog,
   DialogContent,
@@ -26,9 +22,15 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
+import { ConfigDrawer } from '@/components/config-drawer'
+import { Header } from '@/components/layout/header'
+import { Main } from '@/components/layout/main'
+import { PageHeader } from '@/components/layout/page-header'
+import { ProfileDropdown } from '@/components/profile-dropdown'
+import { Search } from '@/components/search'
+import { ThemeSwitch } from '@/components/theme-switch'
 import {
   categorySchema,
   type CategoryFormData,
@@ -39,13 +41,13 @@ import {
   useUpdateCategory,
   useDeleteCategory,
 } from '@/features/cms/hooks/use-categories'
-import type { CategoryWithPostCount } from '@/lib/api/types'
-import { toast } from 'sonner'
+import { CategoriesSkeleton } from './categories-skeleton'
 
 export function CategoriesPage() {
   const [dialogOpen, setDialogOpen] = useState(false)
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
-  const [selectedCategory, setSelectedCategory] = useState<CategoryWithPostCount | null>(null)
+  const [selectedCategory, setSelectedCategory] =
+    useState<CategoryWithPostCount | null>(null)
 
   const { data, isLoading, error } = useCategories()
   const createMutation = useCreateCategory()
@@ -97,7 +99,11 @@ export function CategoriesPage() {
       setDialogOpen(false)
       form.reset()
     } catch {
-      toast.error(selectedCategory ? 'Gagal memperbarui kategori' : 'Gagal membuat kategori')
+      toast.error(
+        selectedCategory
+          ? 'Gagal memperbarui kategori'
+          : 'Gagal membuat kategori'
+      )
     }
   }
 
@@ -145,23 +151,7 @@ export function CategoriesPage() {
         />
 
         {isLoading ? (
-          <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
-            {[1, 2, 3].map((i) => (
-              <Card key={i}>
-                <CardHeader>
-                  <div className='h-6 w-32 animate-pulse rounded bg-muted' />
-                  <div className='h-4 w-24 animate-pulse rounded bg-muted' />
-                </CardHeader>
-                <CardContent>
-                  <div className='mb-4 h-4 w-full animate-pulse rounded bg-muted' />
-                  <div className='flex items-center justify-between'>
-                    <div className='h-4 w-24 animate-pulse rounded bg-muted' />
-                    <div className='h-4 w-8 animate-pulse rounded bg-muted' />
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          <CategoriesSkeleton />
         ) : (
           <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
             {categories.map((category) => (
@@ -170,7 +160,9 @@ export function CategoriesPage() {
                   <div className='flex items-start justify-between'>
                     <div className='flex-1'>
                       <CardTitle>{category.name}</CardTitle>
-                      <p className='text-sm text-muted-foreground'>/{category.slug}</p>
+                      <p className='text-sm text-muted-foreground'>
+                        /{category.slug}
+                      </p>
                     </div>
                     <div className='flex gap-1'>
                       <Button
@@ -197,15 +189,18 @@ export function CategoriesPage() {
                     </p>
                   )}
                   <div className='flex items-center justify-between text-sm'>
-                    <span className='text-muted-foreground'>Jumlah Artikel</span>
-                    <span className='font-medium'>{category.postCount ?? 0}</span>
+                    <span className='text-muted-foreground'>
+                      Jumlah Artikel
+                    </span>
+                    <span className='font-medium'>
+                      {category.postCount ?? 0}
+                    </span>
                   </div>
                 </CardContent>
               </Card>
             ))}
           </div>
         )}
-        </div>
 
         {/* Create/Edit Dialog */}
         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
@@ -306,7 +301,8 @@ export function CategoriesPage() {
               <DialogTitle>Hapus Kategori</DialogTitle>
               <DialogDescription>
                 Apakah Anda yakin ingin menghapus kategori &quot;
-                {selectedCategory?.name}&quot;? Tindakan ini tidak dapat dibatalkan.
+                {selectedCategory?.name}&quot;? Tindakan ini tidak dapat
+                dibatalkan.
               </DialogDescription>
             </DialogHeader>
 

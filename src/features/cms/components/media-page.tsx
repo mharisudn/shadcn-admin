@@ -12,6 +12,7 @@ import { Search as SearchComponent } from '@/components/search'
 import { ThemeSwitch } from '@/components/theme-switch'
 import { MediaUploadZone, UploadedFileItem } from './media-upload-zone'
 import { useMedia, useUploadMedia, useDeleteMedia } from '../hooks/use-media'
+import { MediaSkeleton } from './media-skeleton'
 import type { CreateMediaInput } from '@/lib/api/types'
 import { toast } from 'sonner'
 
@@ -145,11 +146,7 @@ export function MediaPage() {
 
         {/* Media Grid */}
         {isLoading ? (
-          <Card>
-            <CardContent className='flex h-64 items-center justify-center'>
-              <p className='text-muted-foreground'>Memuat media...</p>
-            </CardContent>
-          </Card>
+          <MediaSkeleton />
         ) : (
           <div className='grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
             {filteredData.map((item) => (
