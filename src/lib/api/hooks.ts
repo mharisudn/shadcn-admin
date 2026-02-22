@@ -52,9 +52,7 @@ function getMutationOptions<TData, TError, TVariables, TContext>(
 ) {
   return {
     onSuccess: () => {
-      if (successMessage) {
-        console.log(successMessage)
-      }
+      // TODO: Add toast notification for successMessage
       if (queryKeysToInvalidate) {
         queryKeysToInvalidate.forEach((keys) => {
           queryClient.invalidateQueries({ queryKey: keys })
