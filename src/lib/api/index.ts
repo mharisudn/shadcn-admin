@@ -8,6 +8,9 @@
 export { apiClient, extractErrorInfo, showErrorToast } from './client'
 export type { ApiError } from './client'
 
+// Export query keys
+export { queryKeys } from './hooks'
+
 // Export all types
 export type {
   // Base types
