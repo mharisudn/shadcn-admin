@@ -1,4 +1,5 @@
 import { pgTable, uuid, varchar, integer, text, timestamp } from 'drizzle-orm/pg-core'
+import { users } from './users'
 
 export const media = pgTable('media', {
   id: uuid('id').primaryKey().defaultRandom(),
@@ -11,7 +12,7 @@ export const media = pgTable('media', {
   path: varchar('path', { length: 500 }).notNull(),
   altText: varchar('alt_text', { length: 500 }),
   caption: text('caption'),
-  uploadedBy: uuid('uploaded_by'),
+  uploadedBy: uuid('uploaded_by').references(() => users.id),
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
 })

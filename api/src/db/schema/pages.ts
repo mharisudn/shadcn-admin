@@ -7,8 +7,8 @@ export const pages = pgTable('pages', {
   slug: varchar('slug', { length: 500 }).notNull().unique(),
   content: text('content').notNull(),
   status: varchar('status', { length: 20 }).notNull(), // draft, published
-  parentId: uuid('parent_id'),
-  authorId: uuid('author_id').references(() => users.id).notNull(),
+  parentId: uuid('parent_id').references(() => pages.id, { onDelete: 'set null' }),
+  authorId: uuid('author_id').references(() => users.id, { onDelete: 'restrict' }).notNull(),
   entityType: varchar('entity_type', { length: 20 }).notNull(), // yayasan, school
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),

@@ -1,4 +1,4 @@
-import { pgTable, uuid, varchar, text, timestamp, integer } from 'drizzle-orm/pg-core'
+import { pgTable, uuid, varchar, text, timestamp, integer, primaryKey } from 'drizzle-orm/pg-core'
 import { media } from './media'
 
 export const galleries = pgTable('galleries', {
@@ -12,8 +12,9 @@ export const galleries = pgTable('galleries', {
 })
 
 export const galleryMedia = pgTable('gallery_media', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  galleryId: uuid('gallery_id').references(() => galleries.id).notNull(),
-  mediaId: uuid('media_id').references(() => media.id).notNull(),
+  galleryId: uuid('gallery_id').references(() => galleries.id, { onDelete: 'cascade' }).notNull(),
+  mediaId: uuid('media_id').references(() => media.id, { onDelete: 'cascade' }).notNull(),
   order: integer('order').notNull().default(0),
-})
+}, (table) => ({
+  pk: primaryKey({ columns: [table.galleryId, table.mediaId] })
+}))
